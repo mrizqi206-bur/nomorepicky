@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Picky No More</title>
+  <meta content="Informasi lengkap tentang picky eater pada anak: penyebab, dampak, ciri, dan solusi." name="description"/>
+  <link href="favicon.ico" rel="icon" type="image/x-icon"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg-light: #e6eedb;
+      --bg-dark: #013220;
+      --green-strong: #355E3B;
+      --green-medium: #6C8B6E;
+      --green-soft: #9AA06D;
+      --text-light: #ffffff;
+    }
+    html {
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+    *, *:before, *:after {
+      box-sizing: inherit;
+    }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--bg-light);
+      color: var(--bg-dark);
+      scroll-behavior: smooth;
+    }
+    header.hero {
+      position: relative;
+      background: url('front-view-picky-girl-refuse-vegetables.jpg') center/cover no-repeat;
+      min-height: 220px;
+      height: 28vw;
+      max-height: 420px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+    }
+    .overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(1, 50, 32, 0.55);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .judul-utama {
+      font-family: 'Playfair Display', serif;
+      font-size: 4.2rem;
+      color: #fffbe9;
+      margin: 0;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.35);
+      -webkit-text-stroke: 0.5px rgba(0,0,0,0.2);
+      line-height: 1.1;
+      letter-spacing: -1px;
+    }
+    .tagline {
+      font-size: 1.2rem;
+      font-style: italic;
+      color: #e0f5cf;
+      margin-top: 1rem;
+    }
+    nav {
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+    .menu-toggle {
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: none;
+    }
+    .menu-horizontal {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+      transition: max-height 0.3s;
+    }
+    .menu-horizontal a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-weight: 600;
+      padding: 0.5rem 0.75rem;
+      border-radius: 6px;
+      transition: background 0.3s, color 0.3s;
+      font-size: 1rem;
+    }
+    .menu-horizontal a:hover,
+    .menu-horizontal a.active {
+      background-color: var(--green-medium);
+      color: #fffbe9;
+    }
+    section {
+      padding: 2rem 4%;
+      max-width: 900px;
+      margin: auto;
+      display: none;
+    }
+    h2 {
+      color: var(--green-strong);
+      margin-top: 2rem;
+    }
+    ul, ol {
+      padding-left: 1.5rem;
+    }
+    .video-grid {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      margin-top: 1rem;
+    }
+    .video-grid iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    /* Footer */
+    footer {
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+    footer a {
+      color: var(--green-soft);
+      text-decoration: underline;
+    }
+    .custom-footer {
+      background-color: #013220;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 2rem;
+      flex-wrap: wrap;
+      font-size: 0.95rem;
+    }
+    .footer-left {
+      display: flex;
+      align-items: center;
+    }
+    .author-photo {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 10px;
+    }
+    .footer-right {
+      text-align: right;
+    }
+    .footer-right p {
+      margin: 0 0 4px;
+      font-size: 0.75rem;
+    }
+    .social-icons a {
+      margin-left: 8px;
+      font-size: 1.2rem;
+      color: white;
+      text-decoration: none;
+      display: inline-block;
+      transition: transform 0.2s;
+    }
+    .social-icons a:hover {
+      transform: scale(1.15);
+      color: #ffd700;
+    }
+    /* Tombol kembali ke atas */
+    #toTopBtn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: var(--green-soft);
+      border: none;
+      color: white;
+      padding: 10px 14px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      cursor: pointer;
+      z-index: 1000;
+      display: none;
+    }
+    /* --- MOBILE STYLES --- */
+    @media (max-width: 900px) {
+      .judul-utama {
+        font-size: 2.3rem;
+      }
+      .tagline {
+        font-size: 1rem;
+      }
+      header.hero {
+        height: 120px;
+        min-height: 100px;
+        max-height: 180px;
+      }
+      nav {
+        padding: 0.7rem 1rem;
+      }
+      .custom-footer, section {
+        padding-left: 4vw;
+        padding-right: 4vw;
+      }
+    }
+    @media (max-width: 600px) {
+      html {
+        font-size: 14px;
+      }
+      header.hero {
+        height: 80px;
+        min-height: 70px;
+        max-height: 120px;
+      }
+      .judul-utama {
+        font-size: 1.2rem;
+        letter-spacing: 0;
+        line-height: 1.15;
+      }
+      .tagline {
+        font-size: 0.90rem;
+        margin-top: 0.4rem;
+      }
+      .menu-toggle {
+        display: block;
+        color: white;
+        font-size: 1.5rem;
+      }
+      .menu-horizontal {
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.6rem;
+        padding: 0.7rem 0;
+        background: var(--bg-dark);
+        width: 100%;
+        margin-top: 0.5rem;
+      }
+      .menu-horizontal.show {
+        display: flex;
+      }
+      .custom-footer {
+        flex-direction: column;
+        text-align: center;
+        padding: 1rem 0.5rem;
+        font-size: 0.9rem;
+      }
+      .footer-right {
+        margin-top: 1rem;
+        text-align: center;
+      }
+    }
+    @media (max-width: 400px) {
+      .judul-utama {
+        font-size: 1rem;
+      }
+    }
+  </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const sections = document.querySelectorAll("section");
+      const menuLinks = document.querySelectorAll(".menu-horizontal a");
+      const welcome = document.getElementById("awal");
+      const toggleBtn = document.getElementById("toggle-menu");
+      const menuContainer = document.getElementById("menu-links");
+      const toTopBtn = document.getElementById("toTopBtn");
+
+      // Tampilkan hanya section awal
+      sections.forEach(sec => sec.style.display = "none");
+      if (welcome) welcome.style.display = "block";
+
+      menuLinks.forEach(link => {
+        link.addEventListener("click", e => {
+          e.preventDefault();
+          const targetId = link.getAttribute("href").substring(1);
+
+          menuLinks.forEach(l => l.classList.remove("active"));
+          link.classList.add("active");
+
+          sections.forEach(sec => sec.style.display = "none");
+          const targetSection = document.getElementById(targetId);
+          if (targetSection) {
+            targetSection.style.display = "block";
+            targetSection.scrollIntoView({ behavior: "smooth" });
+          }
+
+          menuContainer.classList.remove("show");
+        });
+      });
+
+      toggleBtn.addEventListener("click", () => {
+        menuContainer.classList.toggle("show");
+      });
+
+      // Tombol to top muncul saat scroll
+      window.onscroll = function () {
+        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+          toTopBtn.style.display = "block";
+        } else {
+          toTopBtn.style.display = "none";
+        }
+      };
+    });
+
+    // Lightbox functionality
+    function openLightbox(src) {
+      const lightbox = document.getElementById("lightbox");
+      const lightboxImg = document.getElementById("lightbox-img");
+      lightboxImg.src = src;
+      lightbox.style.display = "flex";
+    }
+    function closeLightbox() {
+      document.getElementById("lightbox").style.display = "none";
+    }
+    window.openLightbox = openLightbox;
+    window.closeLightbox = closeLightbox;
+  </script>
+</head>
+<body>
+<!-- Header -->
+<header class="hero">
+  <div class="overlay">
+    <h1 class="judul-utama">Picky No More</h1>
+    <p class="tagline">Ubah Momen Makan Jadi Petualangan Penuh Rasa</p>
+  </div>
+</header>
+<!-- Navigasi Menu -->
+<nav>
+  <div style="display: flex; justify-content: flex-end; align-items: center;">
+    <button aria-label="Toggle Menu" class="menu-toggle" id="toggle-menu">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+  <div class="menu-horizontal" id="menu-links">
+    <a href="#pengertian">Pengertian</a>
+    <a href="#faktor">Faktor Penyebab</a>
+    <a href="#ciri">Ciri-ciri</a>
+    <a href="#dampak">Dampak</a>
+    <a href="#solusi">Solusi</a>
+    <a href="#penyajian">Penyajian</a>
+    <a href="#video">Video</a>
+    <a href="#saran-penyajian">Saran Penyajian</a>
+  </div>
+</nav>
+<!-- Sambutan Awal -->
+<section id="awal" style="text-align: center;">
+  <h2>Selamat Datang di Picky No More</h2>
+  <p>Silakan pilih bagian dari menu di atas untuk mulai membaca informasi tentang Picky Eater.</p>
+</section>
+<!-- Konten -->
+<section id="pengertian">
+  <h2>Apa Itu Picky Eater pada Anak?</h2>
+  <p style="text-align: justify;">
+    <strong>Picky Eater</strong> adalah perilaku menolak, tidak berkeinginan, dan juga perasaan selektif untuk mengonsumsi makanan atau minuman dengan jenis dan jumlah makanan tertentu. Mereka cenderung mengonsumsi makanan dan minuman yang mereka sukai seperti makanan yang lebih berwarna-warni, manis, bentuk yang unik, dan aroma yang menarik perhatian mereka. 
+  </p>
+</section>
+<section id="faktor">
+  <h2>Mengapa Anak Jadi Picky Eater? Yuk Pahami Faktornya!</h2>
+  <h3>1. Faktor Anak</h3>
+  <ul>
+    <li>
+      <strong>Nafsu Makan:</strong>
+      <p style="margin-top: 0.3rem; text-align: justify;">
+        Picky eater pada anak yang disebabkan oleh hilangnya nafsu makan dapat terjadi mulai dari tingkat yang ringan hingga yang berat, contoh gejala ringan : minum susu botol yang sering sisa dan dalam waktu yang singkat, menyembur-nyemburkan makanan. Contoh gejala berat : GTM (Gerakan Tutup Mulut).
+      </p>
+    </li>
+    <li>
+      <strong>Kondisi Psikologis:</strong>
+      <p style="margin-top: 0.3rem; text-align: justify;">
+        Faktor psikologis yang mempengaruhi terjadinya perilaku kesulitan makan pada anak meliputi kecemasan, ketidakmampuan anak untuk fokus, selera yang kuat, dan tantangan dalam mengontrol diri, perasaan tidak bahagia, kesedihan, depresi, atau ketidaknyamanan yang anak rasakan.
+      </p>
+    </li>
+    <li>
+      <strong>Kondisi Fisik Anak:</strong>
+      <p style="margin-top: 0.3rem; text-align: justify;">
+        Gangguan pada organ pencernaan seperti alergi makanan, kolik, refluks, atau masalah penyerapan nutrisi dapat menyebabkan anak merasa tidak nyaman saat makan. 
+        Akibatnya, anak menolak makan dan berisiko mengalami gizi buruk jika dibiarkan.
+      </p>
+    </li>
+    <li>
+      <strong>Interaksi Ibu dan Anak:</strong>
+      <p style="margin-top: 0.3rem; text-align: justify;">
+        Hubungan emosional yang hangat antara ibu dan anak sangat memengaruhi nafsu makan. 
+        Kontak mata, pujian, dan sentuhan hangat saat makan dapat membuat anak merasa aman. 
+        Sebaliknya, interaksi negatif bisa membuat anak menjauh dari proses makan.
+      </p>
+    </li>
+  </ul>
+  <h3>2. Faktor Orang Tua</h3>
+  <ul>
+    <li>
+      <strong>Perilaku Makan Orang Tua:</strong>
+      <p style="margin-top: 0.3rem; text-align: justify;">
+        Anak cenderung meniru kebiasaan orang tuanya. Jika orang tua punya kebiasaan makan yang buruk, seperti pilih-pilih makanan atau makan tidak teratur, anak kemungkinan besar akan menirunya.
+      </p>
+    </li>
+    <li>
+      <strong>Pola Asuh:</strong>
+      <p style="margin-top: 0.3rem; text-align: justify;">
+        Cara orang tua mengatur pola makan anak juga penting.<br/><br/>
+        <strong>Pola asuh demokratis:</strong> mendukung anak tumbuh mandiri dan mampu mengatur diri.<br/>
+        <strong>Pola asuh otoriter:</strong> terlalu memaksa dan tidak memberi ruang anak berpendapat.<br/>
+        <strong>Pola asuh permisif:</strong> terlalu membebaskan anak, tanpa aturan yang jelas.<br/><br/>
+        Ketiga pola ini berpengaruh pada perilaku makan anak.
+      </p>
+    </li>
+    <li>
+      <strong>Pemberian ASI Eksklusif:</strong>
+      <p style="margin-top: 0.3rem; text-align: justify;">
+        Anak yang mendapat ASI eksklusif lebih terbuka terhadap berbagai rasa makanan karena ASI mencerminkan variasi makanan yang dikonsumsi ibu. 
+        Ini membantu anak lebih mudah menerima makanan saat MPASI dan mengurangi risiko menjadi picky eater.
+      </p>
+    </li>
+    <li>
+      <strong>Pemberian MPASI (Makanan Pendamping ASI):</strong>
+      <p style="margin-top: 0.3rem; text-align: justify;">
+        Cara memperkenalkan makanan padat juga penting. MPASI yang diberikan secara bertahap, dengan rasa dan tekstur yang beragam, serta dalam suasana makan yang menyenangkan akan membantu anak tertarik mencoba makanan baru.
+      </p>
+    </li>
+    <li>
+      <strong>Tingkat Ekonomi Keluarga:</strong>
+      <p style="margin-top: 0.3rem; text-align: justify;">
+        Kondisi ekonomi keluarga menentukan kualitas dan variasi makanan yang bisa diberikan kepada anak. 
+        Semakin tinggi ekonomi keluarga, biasanya semakin banyak pilihan makanan sehat yang tersedia.
+      </p>
+    </li>
+    <li>
+      <strong>Pengetahuan Gizi dan Variasi Makanan:</strong>
+      <p style="margin-top: 0.3rem; text-align: justify;">
+        Orang tua yang memiliki pengetahuan gizi yang baik cenderung lebih mampu menyajikan makanan sehat, bervariasi, dan menarik bagi anak. 
+        Kurangnya pengetahuan ini bisa menyebabkan makanan yang disajikan monoton dan tidak menarik untuk anak.
+      </p>
+    </li>
+    <li>
+      <strong>Usia Orang Tua:</strong>
+      <p style="margin-top: 0.3rem; text-align: justify;">
+        Orang tua yang lebih dewasa biasanya lebih sabar, bijaksana, dan berpengalaman dalam menangani anak, termasuk dalam hal memberi makan. 
+        Tingkat kedewasaan memengaruhi cara mengasuh dan memberi makan anak.
+      </p>
+    </li>
+    <li>
+      <strong>Pendidikan Orang Tua:</strong>
+      <p style="margin-top: 0.3rem; text-align: justify;">
+        Orang tua yang berpendidikan cenderung lebih mudah memahami informasi tentang gizi, kesehatan, dan cara kreatif dalam menyiapkan makanan. 
+        Mereka juga lebih terampil dalam menyajikan makanan yang menarik bagi anak-anak.
+      </p>
+    </li>
+  </ul>
+</section>
+<section id="ciri">
+  <h2>Ciri-ciri Perilaku Picky Eater</h2>
+  <p style="text-align: justify;">
+    Agar orang tua bisa lebih memahami dan mengenali tanda-tanda anak yang mengalami <em>picky eater</em>, berikut ini beberapa ciri umum yang perlu diperhatikan. 
+    Ciri-ciri ini bisa menjadi petunjuk awal bagi orang tua untuk mengambil langkah yang tepat dalam mengatasi kesulitan makan pada anak:
+  </p>
+  <ul>
+    <li>
+      <strong>Menolak saat diajak makan dengan cara merengek, bahkan menangis:</strong>
+      <p style="text-align: justify; margin: 0.3rem 0 1rem 0;">
+        Anak menunjukkan penolakan saat waktu makan tiba, biasanya dengan merengek, menangis, atau marah.
+      </p>
+    </li>
+    <li>
+      <strong>Terlalu fokus pada aktivitas lain saat jam makan:</strong>
+      <p style="text-align: justify; margin: 0.3rem 0 1rem 0;">
+        Anak lebih tertarik pada aktivitas seperti bermain atau menonton, sehingga kehilangan fokus terhadap makan.
+      </p>
+    </li>
+    <li>
+      <strong>Mengeluh merasa tidak enak badan atau memberi berbagai alasan untuk menghindari makan:</strong>
+      <p style="text-align: justify; margin: 0.3rem 0 1rem 0;">
+        Anak sering mengeluh sakit perut, kenyang, atau tidak nafsu makan sebagai alasan untuk menolak makan.
+      </p>
+    </li>
+    <li>
+      <strong>Mengunyah makanan dalam waktu yang cukup lama:</strong>
+      <p style="text-align: justify; margin: 0.3rem 0 1rem 0;">
+        Anak tampak enggan menelan makanan, sehingga makanan dikunyah terlalu lama dan proses makan menjadi lambat.
+      </p>
+    </li>
+    <li>
+      <strong>Gerakan tutup mulut:</strong>
+      <p style="text-align: justify; margin: 0.3rem 0 1rem 0;">
+        Anak menolak makan secara fisik dengan menutup mulut rapat saat ditawari makanan, bahkan menggeleng atau memalingkan wajah.
+      </p>
+    </li>
+    <li>
+      <strong>Kurang menyukai variasi jenis makanan:</strong>
+      <p style="text-align: justify; margin: 0.3rem 0 1rem 0;">
+        Anak cenderung hanya ingin makan makanan tertentu saja, dan menolak mencoba makanan baru seperti sayur atau lauk lain.
+      </p>
+    </li>
+    <li>
+      <strong>Memperlihatkan sensitivitas terhadap tekstur makanan:</strong>
+      <p style="text-align: justify; margin: 0.3rem 0 1rem 0;">
+        Anak menolak makanan karena merasa risih dengan teksturnya, seperti tidak suka makanan lembek, keras, atau yang menempel di tangan.
+      </p>
+    </li>
+  </ul>
+</section>
+<section id="dampak">
+  <h2>Dampak Perilaku Picky Eater</h2>
+  <p style="text-align: justify;">
+    Sebagai orang tua, penting untuk memahami bahwa kebiasaan anak dalam menolak makanan tertentu bukan hanya soal “pilih-pilih makanan” biasa. 
+    Jika dibiarkan, perilaku <em>picky eater</em> bisa berdampak jangka panjang terhadap kesehatan dan perkembangan anak. Berikut ini tiga dampak utama yang perlu diperhatikan:
+  </p>
+  <ul>
+    <li>
+      <strong>Dampak Fisik:</strong>
+      <p style="text-align: justify; margin: 0.3rem 0 1rem 0;">
+        Anak picky eater cenderung mengalami masalah pertumbuhan karena tidak mendapatkan asupan gizi yang cukup. 
+        Mereka berisiko lebih tinggi mengalami stunting (tumbuh pendek akibat kekurangan gizi kronis). Selain itu, meskipun terdengar berlawanan, beberapa anak picky eater justru bisa mengalami obesitas, karena lebih memilih makanan tinggi lemak, gula, dan rendah nutrisi. 
+        Mereka juga bisa mengalami masalah seperti sembelit kronis karena pola makan yang tidak seimbang. 
+        Bahkan, perkembangan mental anak bisa tertinggal hingga 14 poin dibanding anak dengan gizi seimbang.
+      </p>
+    </li>
+    <li>
+      <strong>Dampak Psikologis:</strong>
+      <p style="text-align: justify; margin: 0.3rem 0 1rem 0;">
+        Kekurangan gizi bukan hanya berdampak pada tubuh, tetapi juga pada psikologis anak. 
+        Anak yang mengalami stunting akibat picky eater cenderung memiliki rasa percaya diri rendah, lebih mudah cemas, dan berisiko mengalami depresi saat menginjak usia remaja. 
+        Ketegangan dalam keluarga juga bisa muncul, terutama saat waktu makan menjadi momen penuh tekanan. 
+        Kondisi ini dapat memengaruhi hubungan orang tua dan anak secara emosional.
+      </p>
+    </li>
+    <li>
+      <strong>Dampak Kognitif dan Akademik:</strong>
+      <p style="text-align: justify; margin: 0.3rem 0 1rem 0;">
+        Asupan nutrisi yang tidak lengkap dapat menghambat perkembangan otak anak. 
+        Kekurangan gizi berdampak pada ukuran otak, jumlah sel otak, serta fungsi biokimia di dalamnya. 
+        Hal ini berpengaruh pada kemampuan berpikir, konsentrasi, dan prestasi akademik anak. 
+        Anak yang tidak mendapatkan nutrisi cukup cenderung memiliki daya ingat yang lemah, mudah lelah saat belajar, dan prestasi sekolah yang kurang optimal.
+      </p>
+    </li>
+  </ul>
+</section>
+<section id="solusi">
+  <h2>Solusi Mengatasi Picky Eater</h2>
+  <p style="text-align: justify;">
+    Ada beberapa langkah penting yang bisa dilakukan orang tua untuk membantu anak mengatasi kebiasaan pilih-pilih makanan. 
+    Berikut ini tips yang bisa diterapkan di rumah:
+  </p>
+  <ul>
+    <li>
+      <strong>Kenalkan kembali variasi menu makanan:</strong>
+      <p style="text-align: justify; margin: 0.3rem 0 1rem 0;">
+        Berikan anak berbagai pilihan makanan dengan cara yang menyenangkan. 
+        Semakin banyak variasi, semakin besar kemungkinan anak menemukan makanan yang disukainya, sehingga tidak merasa bosan.
+      </p>
+    </li>
+    <li>
+      <strong>Kurangi cemilan di luar jam makan utama:</strong>
+      <p style="text-align: justify; margin: 0.3rem 0 1rem 0;">
+        Hindari pemberian camilan berlebihan, termasuk susu, di antara waktu makan. 
+        Hal ini penting agar anak tetap merasa lapar dan memiliki nafsu makan saat waktu makan tiba.
+      </p>
+    </li>
+    <li>
+      <strong>Jangan menyerah terlalu cepat:</strong>
+      <p style="text-align: justify; margin: 0.3rem 0 1rem 0;">
+        Jika anak menolak makanan baru setelah beberapa kali ditawarkan, jangan langsung menyerah. 
+        Penelitian menunjukkan bahwa anak bisa mulai menerima makanan baru setelah dicoba 8–10 kali dalam suasana yang nyaman.
+      </p>
+    </li>
+    <li>
+      <strong>Berikan makanan dalam porsi kecil tetapi sering:</strong>
+      <p style="text-align: justify; margin: 0.3rem 0 1rem 0;">
+        Sajikan makanan dalam porsi kecil namun lebih sering sepanjang hari. 
+        Ini membantu anak belajar makan tanpa merasa terbebani, dan tetap menjaga asupan nutrisi.
+      </p>
+    </li>
+    <li>
+      <strong>Buat tampilan makanan menarik:</strong>
+      <p style="text-align: justify; margin: 0.3rem 0 1rem 0;">
+        Anak-anak tertarik pada visual. Sajikan makanan dengan bentuk lucu, warna cerah, atau pola yang menarik untuk memancing rasa ingin tahu mereka.
+      </p>
+    </li>
+    <li>
+      <strong>Perhatikan kondisi psikologis anak saat makan:</strong>
+      <p style="text-align: justify; margin: 0.3rem 0 1rem 0;">
+        Hindari memaksa anak makan. Ciptakan suasana makan yang hangat dan menyenangkan. 
+        Ketika anak merasa nyaman, mereka lebih mudah menerima makanan baru.
+      </p>
+    </li>
+    <li>
+      <strong>Izinkan anak makan sendiri:</strong>
+      <p style="text-align: justify; margin: 0.3rem 0 1rem 0;">
+        Biarkan anak bereksplorasi dengan makanannya. Meskipun berantakan, hal ini penting untuk membangun kemandirian, 
+        melatih keterampilan motorik, dan membangun hubungan positif dengan makanan.
+      </p>
+    </li>
+    <li>
+      <strong>Jangan selalu mengikuti keinginan anak:</strong>
+      <p style="text-align: justify; margin: 0.3rem 0 1rem 0;">
+        Hindari mengganti makanan hanya karena anak menolak. Ini bisa memperkuat perilaku menolak makan sebagai bentuk kontrol. 
+        Tanamkan bahwa makan adalah bagian dari tanggung jawab, tanpa harus memberi ancaman atau pujian berlebihan. 
+        Hindari juga melabeli anak sebagai "nakal" jika ia tidak mau makan.
+      </p>
+    </li>
+    <li>
+      <strong>Hidangkan makanan dengan cara yang menarik:</strong>
+      <p style="text-align: justify; margin: 0.3rem 0 1rem 0;">
+        Anak lebih tertarik pada tampilan makanan yang lucu, berwarna-warni, atau disusun dengan rapi. 
+        Gunakan cetakan bentuk, kombinasi warna sayur dan buah, serta alat makan yang disukai anak untuk menambah minat mereka saat makan.
+      </p>
+    </li>
+  </ul>
+</section>
+<section id="penyajian">
+  <h2>Kunci Penyajian Makanan yang Membantu Atasi Picky Eater</h2>
+  <h3 style="margin-top: 2rem;">Panduan Lengkap Penyajian Makanan Anak</h3>
+  <ul>
+    <li>
+      <strong>Kesesuaian Porsi:</strong>
+      <p style="text-align: justify; margin: 0.3rem 0;">
+        Ketelitian sangat diperlukan dalam menyajikan atau menyiapkan porsi hidangan makanan. 
+        Berikan makanan dalam porsi kecil tetapi lebih sering untuk menghindari rasa terpaksa dan tetap menjaga asupan nutrisi anak.
+      </p>
+    </li>
+    <li>
+      <strong>Variasi Menu:</strong>
+      <p style="text-align: justify; margin: 0.3rem 0;">
+        Menu makanan yang diberikan pada anak sebaiknya mencakup komponen gizi seimbang 4 sehat 5 sempurna:
+      </p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin: 1rem 0;">
+        <div>
+          <img src="sehat1.png" alt="Tabel 4 Sehat 5 Sempurna" style="width: 100%; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+          <p style="text-align: center; margin-top: 0.5rem;">Piring makan sehat 4 sehat 5 sempurna</p>
+        </div>
+        <div>
+          <img src="sehat2.jpg" alt="Tabel 4 Sehat 5 Sempurna" style="width: 100%; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+          <p style="text-align: center; margin-top: 0.5rem;">Menu anak lengkap: nasi, lauk, sayur, buah</p>
+        </div>
+      </div>
+      <ul style="padding-left: 1.5rem;">
+        <li>Makanan (sumber karbohidrat): nasi, jagung, umbi-umbian, roti/gandum</li>
+        <li>Lauk pauk (sumber protein): ayam, ikan, telur, tempe, tahu, daging</li>
+        <li>Buah-buahan (vitamin dan mineral)</li>
+        <li>Susu (kalsium dan nutrisi)</li>
+      </ul>
+    </li>
+    <li>
+      <strong>Cita Rasa:</strong>
+      <ul style="padding-left: 1.5rem;">
+        <li>Gunakan bumbu alami seperti bawang putih, bawang merah, daun salam, jahe, laos, atau keju.</li>
+        <li>Hindari makanan dengan rasa terlalu kuat seperti pedas atau terlalu asam.</li>
+        <li>Kreasikan sayuran yang tidak disukai anak, misalnya dengan merebus lebih lama atau mencampurnya dengan keju/susu untuk mengurangi rasa pahit.</li>
+      </ul>
+    </li>
+    <li>
+      <strong>Penampilan:</strong>
+      <ul style="padding-left: 1.5rem;">
+        <li><strong>Kebersihan:</strong> Cuci tangan sebelum menyiapkan atau menyajikan makanan, serta pastikan alat makan bersih.</li>
+        <li><strong>Kerapian:</strong> Jaga agar makanan tidak tumpah dan tersusun dengan baik. Anak cenderung lebih tertarik pada makanan yang rapi dan cantik.</li>
+        <li><strong>Menarik:</strong> Kombinasikan warna dan bentuk makanan. Misalnya, bentuk nasi seperti karakter favorit anak atau buat kreasi bento sederhana.</li>
+      </ul>
+    </li>
+    <li>
+      <strong>Libatkan Anak dalam Memasak:</strong>
+      <p style="text-align: justify; margin: 0.3rem 0;">
+        Ajak anak untuk ikut serta dalam proses memasak agar mereka lebih mengenal bahan makanan, seperti sayur dan buah. 
+        Anak bisa membantu mengaduk, mencicipi rasa, atau menghias makanan. Ini juga menjadi stimulasi motorik dan kognitif sekaligus meningkatkan rasa ingin mencoba hasil masakannya sendiri.
+      </p>
+    </li>
+  </ul>
+</section>
+<!-- Video Section -->
+<section id="video">
+  <h2>Video Saran Penyajian Makanan Untuk Anak</h2>
+  <div class="video-grid">
+    <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" frameborder="0" src="https://www.youtube.com/embed/oltvbq2h_rE" title="Video Picky Eater"></iframe>
+  </div>
+</section>
+<!-- Tombol kembali ke atas -->
+<button id="toTopBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</button>
+<section id="referensi-penyajian">
+  <h2>📸 Referensi Penyajian Makanan Anak Menarik</h2>
+  <p style="text-align: justify;">
+    Berikut beberapa contoh penyajian makanan yang dapat menginspirasi orang tua untuk membuat tampilan makanan anak lebih menarik. 
+    Visual yang menyenangkan dapat meningkatkan minat makan anak dan membuat momen makan lebih menyenangkan.
+  </p>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+    <div>
+      <img alt="Bento karakter lucu" onclick="openLightbox(this.src)" src="img/bento1.jpg" style="width: 100%; border-radius: 8px; cursor: pointer;"/>
+      <p style="text-align: center; margin-top: 0.5rem;">Bento karakter lucu</p>
+    </div>
+    <div>
+      <img alt="Sayuran warna-warni" onclick="openLightbox(this.src)" src="img/warna-warni.jpg" style="width: 100%; border-radius: 8px; cursor: pointer;"/>
+      <p style="text-align: center; margin-top: 0.5rem;">Kombinasi warna sayuran</p>
+    </div>
+    <div>
+      <img alt="Buah bentuk wajah" onclick="openLightbox(this.src)" src="img/fruit-faces.jpg" style="width: 100%; border-radius: 8px; cursor: pointer;"/>
+      <p style="text-align: center; margin-top: 0.5rem;">Buah bentuk lucu</p>
+    </div>
+    <div>
+      <img alt="Piring anak lucu" onclick="openLightbox(this.src)" src="img/piring-anak.jpg" style="width: 100%; border-radius: 8px; cursor: pointer;"/>
+      <p style="text-align: center; margin-top: 0.5rem;">Piring anak tematik</p>
+    </div>
+  </div>
+</section>
+<!-- Lightbox Viewer -->
+<div id="lightbox" onclick="closeLightbox()" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:9999; justify-content:center; align-items:center;">
+  <img alt="Preview Gambar" id="lightbox-img" src="" style="max-width:90%; max-height:90%; border-radius:8px;"/>
+</div>
+<section id="saran-penyajian">
+  <h2>Saran Penyajian Makanan Anak</h2>
+  <p style="text-align: justify;">
+    Berikut ini beberapa inspirasi penyajian makanan anak yang bisa membantu meningkatkan selera makan. 
+    Gambar-gambar ini menunjukkan bagaimana penyajian yang rapi, bersih, dan menarik dapat membuat waktu makan lebih menyenangkan bagi anak.
+  </p>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+    <div>
+      <img src="saran1.jpg" alt="Bento karakter lucu" style="width: 100%; border-radius: 8px; cursor: pointer;" onclick="openLightbox(this.src)">
+      <p style="text-align: center; margin-top: 0.5rem;">Bento karakter lucu</p>
+    </div>
+    <div>
+      <img src="saran2.jpg" alt="Sayuran warna-warni" style="width: 100%; border-radius: 8px; cursor: pointer;" onclick="openLightbox(this.src)">
+      <p style="text-align: center; margin-top: 0.5rem;">Kombinasi warna sayuran</p>
+    </div>
+    <div>
+      <img src="saran3.jpg" alt="Buah bentuk wajah" style="width: 100%; border-radius: 8px; cursor: pointer;" onclick="openLightbox(this.src)">
+      <p style="text-align: center; margin-top: 0.5rem;">Buah bentuk lucu</p>
+    </div>
+    <div>
+      <img src="saran4.jpg" alt="Piring anak lucu" style="width: 100%; border-radius: 8px; cursor: pointer;" onclick="openLightbox(this.src)">
+      <p style="text-align: center; margin-top: 0.5rem;">Piring anak tematik</p>
+    </div>
+    <div>
+      <img src="saran5.jpg" alt="Bento karakter kartun" style="width: 100%; border-radius: 8px; cursor: pointer;" onclick="openLightbox(this.src)">
+      <p style="text-align: center; margin-top: 0.5rem;">Bento karakter kartun</p>
+    </div>
+    <div>
+      <img src="saran6.jpg" alt="Pelangi warna makanan" style="width: 100%; border-radius: 8px; cursor: pointer;" onclick="openLightbox(this.src)">
+      <p style="text-align: center; margin-top: 0.5rem;">Sayur buah warna pelangi</p>
+    </div>
+    <div>
+      <img src="saran7.jpg" alt="Buah bentuk hewan" style="width: 100%; border-radius: 8px; cursor: pointer;" onclick="openLightbox(this.src)">
+      <p style="text-align: center; margin-top: 0.5rem;">Buah bentuk hewan lucu</p>
+    </div>
+    <div>
+      <img src="saran8.jpg" alt="Piring tema cerita" style="width: 100%; border-radius: 8px; cursor: pointer;" onclick="openLightbox(this.src)">
+      <p style="text-align: center; margin-top: 0.5rem;">Piring tema cerita anak</p>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="custom-footer">
+  <div class="footer-left">
+    <img alt="Karina Wahyu Lestari" class="author-photo" src="foto-removebg-preview.png"/>
+    <div class="author-info">
+      <p><strong>Oleh:</strong><br/>Karina Wahyu Lestari</p>
+    </div>
+  </div>
+  <div class="footer-right">
+    <p>Follow Our Social Media:</p>
+    <div class="social-icons">
+      <a class="icon facebook" href="https://www.facebook.com/karinawahyu.lestari" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+      <a class="icon email" href="mailto:karinawahyu2803@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+      <a href="https://www.instagram.com/karinawhyu_?igsh=NXBrN3p0NWtiZ3Jw" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+    </div>
+  </div>
+</footer>
+<footer>
+  © 2025 Karina Wahyu Lestari. Semua hak dilindungi.<br>
+  Foto oleh Freepik dan Pinterest
+</footer>
+</body>
+</html>
